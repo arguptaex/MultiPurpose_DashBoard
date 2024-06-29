@@ -1,7 +1,12 @@
+import { updateUser } from "@/app/lib/actions";
+import { fetchUser } from "@/app/lib/data";
 import styles from "@/components/dashboard/users/singleUser/singleUser.module.css";
 import Image from "next/image";
 
-const SingleUserPage = () => {
+const SingleUserPage = async ({ params }) => {
+  const { id } = params;
+  // console.log(id);
+  const user = await fetchUser(id);
   return (
     <section className="singleUser-section">
       <div className={styles.container}>
@@ -9,20 +14,21 @@ const SingleUserPage = () => {
           <div className={styles.imgContainer}>
             <Image src="/avatar.png" alt="" fill />
           </div>
-          Archit Gupta
+          {user.username}
         </div>
         <div className={styles.formContainer}>
-          <form action="" className={styles.form}>
+          <form action={updateUser} className={styles.form}>
+            <input type="hidden" name="id" value={user.id} />
             <label>Username</label>
-            <input type="text" name="username" placeholder="Archit gupta" />
+            <input type="text" name="username" placeholder={user.username} />
             <label>Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Architgupta@gmail.com"
-            />
+            <input type="email" name="email" placeholder={user.email} />
             <label>Password</label>
-            <input type="password" name="password" placeholder="Archit gupta" />
+            <input
+              type="password"
+              name="password"
+              placeholder={user.password}
+            />
             <label>Phone</label>
             <input type="text" name="phone" placeholder="+1213131" />
             <label>Address</label>
@@ -30,14 +36,23 @@ const SingleUserPage = () => {
 
             <label>Is Admin?</label>
             <select name="isAdmin" id="isAdmin">
-              <option value={true}>Yes</option>
-              <option value={false}>No</option>
+              <option value={true} selected={user.isAdmin}>
+                Yes
+              </option>
+              <option value={false} selected={!user.isAdmin}>
+                No
+              </option>
             </select>
             <label>Is Active?</label>
             <select name="isActive" id="isActive">
-              <option value={true}>Yes</option>
-              <option value={false}>No</option>
+              <option value={true} selected={user.isActive}>
+                Yes
+              </option>
+              <option value={false} selected={!user.isActive}>
+                No
+              </option>
             </select>
+            <button>Update</button>
           </form>
         </div>
       </div>

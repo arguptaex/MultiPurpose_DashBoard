@@ -1,12 +1,13 @@
 // import React from 'react'
+import { addProduct } from "@/app/lib/actions";
 import styles from "@/components/dashboard/products/addProduct/addProducts.module.css";
 const AddProductPage = () => {
   return (
     <section className="add-product-section">
       <div className={styles.container}>
-        <form action="" className={styles.form}>
+        <form action={addProduct} className={styles.form}>
           <input type="text" placeholder="title" name="title" required />
-          <select name="cat" id="cat">
+          <select name="category" id="category">
             <option value="general">Choose a category</option>
             <option value="kitchen">Kitchen</option>
             <option value="phone">Phone</option>
