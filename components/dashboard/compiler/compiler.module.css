@@ -1,0 +1,11 @@
+
+.codeEditor{
+    max-height: 50vh;
+}
+
+.outputBox{
+    height:15vh;
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 10px;
+}
