@@ -46,8 +46,10 @@ const menuItems = [
     title: "Analytics",
     list: [
       {
-        title: "Revenue",
-        path: "/dashboard/revenue",
+        // title: "Revenue",
+        title: "Compiler",
+        // path: "/dashboard/revenue",
+        path: "/dashboard/compiler",
         icon: <MdWork />,
       },
       {

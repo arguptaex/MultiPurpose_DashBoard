@@ -1,9 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
+import "./globals.css";
 
 export default function Home() {
   return (
-    <main>
+    <main className="homepage">
       Homepage
-    </main >
+      <Link href="/dashboard">Go to dashboard</Link>
+    </main>
   );
 }

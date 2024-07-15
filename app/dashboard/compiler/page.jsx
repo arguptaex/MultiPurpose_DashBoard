@@ -43,7 +43,9 @@ function App() {
         value={lang}
         onChange={(e) => {
           localStorage.setItem("lang", e.target.value);
-          return setLang(e.target.value);
+          localStorage.setItem("code", "");
+
+          return setLang(e.target.value), setCode("");
         }}
       >
         <option value="javascript">Javascript</option>
@@ -55,7 +57,8 @@ function App() {
           height="50vh"
           language={lang}
           // defaultLanguage={lang}
-          defaultValue={code}
+          //   defaultValue={code}
+          value={code}
           theme="vs-dark"
           onChange={(value) => {
             localStorage.setItem("code", value);
